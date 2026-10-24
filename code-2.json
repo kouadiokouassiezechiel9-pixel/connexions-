@@ -1,0 +1,9 @@
+{
+  "name": "appconnexion",
+  "version": "0.1.0",
+  "description": "Connexion Bank - Banque de connexion (prototype)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

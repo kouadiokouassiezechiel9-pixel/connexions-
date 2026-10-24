@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexion Bank</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- Vue auth -->
+<div id="auth-view" class="center-screen">
+  <div class="glass card auth-card">
+    <h1 class="logo">🏦 Connexion <span>Bank</span></h1>
+    <p class="subtitle">Transformez votre Wi-Fi en réserve de données</p>
+    <div class="tabs">
+      <button id="tab-login" class="tab active">Connexion</button>
+      <button id="tab-register" class="tab">Inscription</button>
+    </div>
+    <form id="auth-form">
+      <input type="email" id="email" placeholder="E-mail" autocomplete="email" required>
+      <input type="password" id="password" placeholder="Mot de passe (6 caractères min.)" autocomplete="current-password" required>
+      <button type="submit" class="btn primary" id="auth-submit">Se connecter</button>
+      <p id="auth-error" class="error"></p>
+    </form>
+  </div>
+</div>
+
+<!-- Vue app -->
+<div id="app-view" class="hidden">
+  <header class="glass topbar">
+    <div class="brand">🏦 Connexion <span>Bank</span></div>
+    <div class="top-right">
+      <span id="tier-badge" class="badge"></span>
+      <span id="user-email" class="muted"></span>
+      <button id="logout-btn" class="btn ghost small">Déconnexion</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Solde -->
+    <section class="glass card balance-card">
+      <div class="balance-head">
+        <div>
+          <span class="label">Réserve disponible</span>
+          <h2><span id="stock-value">0</span> <small>Mo</small></h2>
+          <span id="stock-gb" class="muted small-text"></span>
+        </div>
+        <div id="gauge-ring" class="ring"><span id="ring-pct">0%</span></div>
+      </div>
+      <div class="meter"><div id="meter-fill" class="meter-fill"></div></div>
+      <p id="cap-info" class="muted small-text"></p>
+    </section>
+
+    <!-- Wi-Fi en direct -->
+    <section class="grid-2">
+      <div class="glass card">
+        <h3>📡 Dépôt Wi-Fi</h3>
+        <p class="muted small-text">Simulez le trafic capté par la box. Le ratio (<span id="ratio-label">50</span> %) part dans la réserve.</p>
+        <label>Trafic simulé : <strong id="sim-value">2</strong> Mo/s</label>
+        <input type="range" id="sim-slider" min="1" max="50" value="2">
+        <div class="row">
+          <button id="tick-deposit" class="btn primary">⚡ Générer du trafic</button>
+          <span id="live-counter" class="pill">0 Mo en direct</span>
+        </div>
+        <p id="deposit-status" class="status"></p>
+      </div>
+      <div class="glass card">
+        <h3>📱 Retrait mobile</h3>
+        <p class="muted small-text">Utilisez votre réserve en déplacement.</p>
+        <button id="use-stock" class="btn accent">💳 Consommer <span id="use-rate">2</span> Mo</button>
+        <p id="withdraw-status" class="status"></p>
+      </div>
+    </section>
+
+    <!-- Réglages + offres -->
+    <section class="grid-2">
+      <div class="glass card">
+        <h3>⚙️ Ratio de mise en réserve</h3>
+        <p class="muted small-text">Part du trafic déposée en réserve : <strong id="ratio-display">50 %</strong></p>
+        <input type="range" id="ratio-slider" min="10" max="90" step="5" value="50">
+        <p id="ratio-status" class="status"></p>
+      </div>
+      <div class="glass card">
+        <h3>🚀 Offres</h3>
+        <div id="tiers-list" class="tiers"></div>
+        <p class="muted small-text">Simulation : le paiement est fictif (prototype).</p>
+      </div>
+    </section>
+
+    <!-- Historique -->
+    <section class="glass card">
+      <h3>📜 Historique</h3>
+      <ul id="history-list" class="history"></ul>
+    </section>
+  </main>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
